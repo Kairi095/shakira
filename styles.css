@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: pink; /* Set background color to pink */
+            margin: 0;
+            padding: 0;
+            position: relative;
+            color: white; /* Set text color to white */
+        }
+        .corner-image {
+            position: fixed;
+            width: 100px; /* Adjust the size of corner images */
+            opacity: 0.3; /* Set opacity to 30% */
+        }
+        .corner-image.top-left {
+            top: 20px; /* Adjust top distance from the top */
+            left: 20px; /* Adjust left distance from the left */
+        }
+        .corner-image.top-right {
+            top: 20px; /* Adjust top distance from the top */
+            right: 20px; /* Adjust right distance from the right */
+        }
+        .corner-image.bottom-left {
+            bottom: 20px; /* Adjust bottom distance from the bottom */
+            left: 20px; /* Adjust left distance from the left */
+        }
+        .corner-image.bottom-right {
+            bottom: 20px; /* Adjust bottom distance from the bottom */
+            right: 20px; /* Adjust right distance from the right */
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+        }
+        .button {
+            background-color: transparent; /* Set button background to transparent */
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid white; /* Add border */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: white;
+            color: pink;
+        }
+        .big-yes {
+            padding: 30px 60px; /* Initial size of Yes button */
+            font-size: 1.2em;
+        }
+        .hidden {
+            display: none;
+        }
+        .heart-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            padding: 10px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            font-family: "Lucida Handwriting", cursive;
+            font-size: 40px; /* Increase font size to 40px */
+        }
+        #texts {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <img src="bg1.png" alt="Background Image" class="corner-image top-left">
+    <img src="bg2.png" alt="Background Image" class="corner-image top-right">
+    <img src="bg3.png" alt="Background Image" class="corner-image bottom-left">
+    <img src="bg4.png" alt="Background Image" class="corner-image bottom-right">
+
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <button id="yes" class="button" onclick="showOMG()">Yes</button>
+        <button id="no" class="button" onclick="noClicked()">No</button>
+        <div id="texts"></div>
+        <div id="heart-images">
+            <img src="heart1.png" alt="Heart Image" class="heart-image">
+            <img src="heart2.png" alt="Heart Image" class="heart-image">
+            <img src="heart3.png" alt="Heart Image" class="heart-image">
+            <img src="heart4.png" alt="Heart Image" class="heart-image">
+            <img src="heart5.png" alt="Heart Image" class="heart-image">
+            <img src="heart6.png" alt="Heart Image" class="heart-image">
+        </div>
+        <div class="footer">
+            <p>Happy Valentine's Kira</p>
+        </div>
+    </div>
+
+    <script>
+        var noClicks = 0;
+
+        function noClicked() {
+            var yesButton = document.getElementById('yes');
+            var texts = document.getElementById('texts');
+
+            if (noClicks < 6) {
+                noClicks++;
+                var text = '';
+                if (noClicks === 1) text = 'PLZZ';
+                else if (noClicks === 2) text = 'Why not :(';
+                else if (noClicks === 3) text = 'PLEASE PLEASE PLEASE';
+                else if (noClicks === 4) text = 'I want the one I can\'t have';
+                else if (noClicks === 5) text = 'So Please, Please, Please, Let me get what I want';
+                else if (noClicks === 6) text = 'Okay, I understand sorry :(';
+                texts.innerHTML = text;
+                yesButton.style.padding = `${30 + noClicks * 30}px ${60 + noClicks * 60}px`; // Increase padding
+            } else {
+                yesButton.classList.add('big-yes');
+                document.getElementById('heart-images').classList.add('move-down');
+            }
+        }
+
+        function showOMG() {
+            var texts = document.getElementById('texts');
+            texts.innerHTML = 'OMG REALLY!?';
+            var img = document.createElement('img');
+            img.src = 'omg1.png';
+            texts.appendChild(img);
+        }
+    </script>
+</body>
+</html>
